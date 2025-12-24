@@ -17,76 +17,264 @@
         h1, h2, h3, .logo { font-family: 'Orbitron', sans-serif; text-transform: uppercase; }
         header { display: flex; justify-content: space-between; align-items: center; padding: 20px 5%; position: absolute; width: 100%; z-index: 1000; }
         .logo { font-size: 1.5rem; font-weight: 900; color: #fff; text-shadow: 0 0 10px var(--neon-cyan); }
-        .btn-parent { border: 2px solid var(--neon-magenta); padding: 8px 20px; border-radius: 50px; text-decoration: none; color: #fff; font-weight: bold; font-size: 0.8rem; }
+        .btn-parent { 
+            border: 2px solid var(--neon-magenta); 
+            padding: 8px 20px; 
+            border-radius: 50px; 
+            text-decoration: none; 
+            color: #fff; 
+            font-weight: bold; 
+            font-size: 0.8rem; 
+            transition: all 0.3s ease; 
+        }
+        .btn-parent:hover {
+            background-color: var(--neon-magenta);
+            box-shadow: 0 0 15px var(--neon-magenta);
+        }
 
         /* HERO SECTION - A PRIMEIRA PÁGINA */
         .hero {
             height: 100vh;
             background: var(--hero-gradient);
-            display: flex; flex-direction: column; justify-content: center; align-items: center;
-            text-align: center; padding: 0 20px;
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center;
+            text-align: center; 
+            padding: 0 20px;
             box-shadow: inset 0 -150px 100px var(--bg-body);
+            padding-top: 80px; /* Evita sobreposição com header */
         }
-        .hero h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); line-height: 1.1; margin-bottom: 20px; }
-        .hero p { max-width: 700px; font-size: 1.2rem; color: #e0e0e0; margin-bottom: 40px; }
-        .btn-start { background: #fff; color: #2a0845; padding: 15px 40px; border-radius: 50px; text-decoration: none; font-weight: bold; transition: 0.3s; }
+        .hero h1 { 
+            font-size: clamp(2.5rem, 8vw, 4.5rem); 
+            line-height: 1.1; 
+            margin-bottom: 20px; 
+            text-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+        }
+        .hero p { 
+            max-width: 700px; 
+            font-size: 1.2rem; 
+            color: #e0e0e0; 
+            margin-bottom: 40px; 
+            line-height: 1.6;
+        }
+        .btn-start { 
+            background: #fff; 
+            color: #2a0845; 
+            padding: 15px 40px; 
+            border-radius: 50px; 
+            text-decoration: none; 
+            font-weight: bold; 
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            border: 2px solid transparent;
+        }
+        .btn-start:hover {
+            background: transparent;
+            color: #fff;
+            border-color: var(--neon-cyan);
+            box-shadow: 0 0 20px var(--neon-cyan);
+        }
 
         /* GRID ESTILO NETFLIX */
-        .catalog { padding: 50px 5%; }
-        .row-title { font-size: 1.4rem; margin-bottom: 25px; color: #e5e5e5; display: flex; align-items: center; gap: 15px; margin-top: 40px; }
-        .row-title::after { content: ""; height: 1px; flex-grow: 1; background: linear-gradient(to right, var(--neon-cyan), transparent); }
-        .netflix-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; }
-        .card { position: relative; height: 170px; border-radius: 12px; overflow: hidden; cursor: pointer; transition: 0.4s ease; background-size: cover; background-position: center; border: 1px solid rgba(255,255,255,0.1); }
-        .card:hover { transform: scale(1.08); z-index: 10; border-color: var(--neon-cyan); box-shadow: 0 0 25px rgba(0, 255, 255, 0.4); }
-        .overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(5, 5, 10, 0.95) 15%, transparent 100%); display: flex; flex-direction: column; justify-content: flex-end; padding: 20px; }
-        .mod-tag { font-size: 0.75rem; color: var(--neon-magenta); font-weight: 900; }
-        .card h3 { font-size: 1.1rem; color: #fff; margin-top: 5px; }
-        .play-icon { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 3rem; opacity: 0; transition: 0.3s; }
-        .card:hover .play-icon { opacity: 1; text-shadow: 0 0 15px var(--neon-cyan); }
+        .catalog { 
+            padding: 80px 5%; 
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .row-title { 
+            font-size: 1.6rem; 
+            margin-bottom: 25px; 
+            color: #e5e5e5; 
+            display: flex; 
+            align-items: center; 
+            gap: 15px; 
+            margin-top: 60px;
+            padding-left: 10px;
+        }
+        .row-title:first-child {
+            margin-top: 0;
+        }
+        .row-title::after { 
+            content: ""; 
+            height: 2px; 
+            flex-grow: 1; 
+            background: linear-gradient(to right, var(--neon-cyan), transparent); 
+        }
+        .netflix-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
+            gap: 30px; 
+        }
+        .card { 
+            position: relative; 
+            height: 180px; 
+            border-radius: 12px; 
+            overflow: hidden; 
+            cursor: pointer; 
+            transition: 0.4s ease; 
+            background-size: cover; 
+            background-position: center; 
+            border: 1px solid rgba(255,255,255,0.1);
+            aspect-ratio: 16/9;
+        }
+        .card:hover { 
+            transform: scale(1.08); 
+            z-index: 10; 
+            border-color: var(--neon-cyan); 
+            box-shadow: 0 0 25px rgba(0, 255, 255, 0.6); 
+        }
+        .overlay { 
+            position: absolute; 
+            inset: 0; 
+            background: linear-gradient(to top, rgba(5, 5, 10, 0.95) 20%, transparent 100%); 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: flex-end; 
+            padding: 20px; 
+            opacity: 1;
+            transition: opacity 0.3s;
+        }
+        .card:hover .overlay {
+            opacity: 0.9;
+        }
+        .mod-tag { 
+            font-size: 0.75rem; 
+            color: var(--neon-magenta); 
+            font-weight: 900; 
+            letter-spacing: 1px;
+        }
+        .card h3 { 
+            font-size: 1.2rem; 
+            color: #fff; 
+            margin-top: 8px; 
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+        .play-icon { 
+            position: absolute; 
+            top: 50%; 
+            left: 50%; 
+            transform: translate(-50%, -50%); 
+            font-size: 3.5rem; 
+            opacity: 0; 
+            transition: 0.3s;
+            color: var(--neon-cyan);
+            text-shadow: 0 0 20px rgba(0, 255, 255, 0.8);
+        }
+        .card:hover .play-icon { 
+            opacity: 1; 
+        }
+
+        /* RESPONSIVIDADE */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: clamp(2rem, 6vw, 3rem); }
+            .hero p { font-size: 1rem; padding: 0 10px; }
+            .btn-start { padding: 12px 30px; }
+            .netflix-grid { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
+            .catalog { padding: 40px 20px; }
+            .row-title { font-size: 1.3rem; }
+        }
+
+        @media (max-width: 480px) {
+            header { padding: 15px 20px; }
+            .logo { font-size: 1.2rem; }
+            .btn-parent { padding: 6px 15px; font-size: 0.7rem; }
+            .hero { padding-top: 100px; }
+            .netflix-grid { grid-template-columns: 1fr; gap: 20px; }
+        }
     </style>
 </head>
 <body>
-    <header><div class="logo">A.I. KIDS LABS</div><a href="#" class="btn-parent">PAINEL DOS PAIS</a></header>
+    <header>
+        <div class="logo">A.I. KIDS LABS</div>
+        <a href="#" class="btn-parent">PAINEL DOS PAIS</a>
+    </header>
+    
     <section class="hero">
-        <h1>DESPERTE O GÊNIO<br>DIGITAL</h1>
-        <p>Explore, aprenda e crie o amanhã com a primeira plataforma de IA para crianças.</p>
+        <h1>DESPERTE O GÊNIO<br><span style="color: var(--neon-cyan)">DIGITAL</span></h1>
+        <p>Explore, aprenda e crie o amanhã com a primeira plataforma de IA desenvolvida especialmente para crianças.</p>
         <a href="#conteudo" class="btn-start">COMEÇAR MISSÃO</a>
     </section>
 
     <div id="conteudo" class="catalog">
         <h2 class="row-title">Temporada 1: Fundamentos</h2>
         <div class="netflix-grid">
-            <div class="card" style="background-image: url('https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=600');"><div class="overlay"><span class="mod-tag">MISSÃO 01</span><h3>O que é IA?</h3></div><div class="play-icon">▶</div></div>
-            <div class="card" style="background-image: url('https://images.unsplash.com/photo-1507413245164-6160d8298b31?w=600');"><div class="overlay"><span class="mod-tag">MISSÃO 02</span><h3>Cérebro Digital</h3></div><div class="play-icon">▶</div></div>
-            <div class="card" style="background-image: url('https://images.unsplash.com/photo-1551288049-bbbda5951748?w=600');"><div class="overlay"><span class="mod-tag">MISSÃO 03</span><h3>Dados e Pixels</h3></div><div class="play-icon">▶</div></div>
+            <div class="card" style="background-image: url('https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=600');">
+                <div class="overlay"><span class="mod-tag">MISSÃO 01</span><h3>O que é IA?</h3></div>
+                <div class="play-icon">▶</div>
+            </div>
+            <div class="card" style="background-image: url('https://images.unsplash.com/photo-1507413245164-6160d8298b31?w=600');">
+                <div class="overlay"><span class="mod-tag">MISSÃO 02</span><h3>Cérebro Digital</h3></div>
+                <div class="play-icon">▶</div>
+            </div>
+            <div class="card" style="background-image: url('https://images.unsplash.com/photo-1551288049-bbbda5951748?w=600');">
+                <div class="overlay"><span class="mod-tag">MISSÃO 03</span><h3>Dados e Pixels</h3></div>
+                <div class="play-icon">▶</div>
+            </div>
         </div>
 
         <h2 class="row-title">Temporada 2: No Dia a Dia</h2>
         <div class="netflix-grid">
-            <div class="card" style="background-image: url('https://images.unsplash.com/photo-1589254065878-42c9da997008?w=600');"><div class="overlay"><span class="mod-tag">MISSÃO 04</span><h3>IA em Casa</h3></div><div class="play-icon">▶</div></div>
-            <div class="card" style="background-image: url('https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=600');"><div class="overlay"><span class="mod-tag">MISSÃO 05</span><h3>Olho da Máquina</h3></div><div class="play-icon">▶</div></div>
-            <div class="card" style="background-image: url('https://images.unsplash.com/photo-1589254065909-b7086229d08c?w=600');"><div class="overlay"><span class="mod-tag">MISSÃO 06</span><h3>A Voz da Robô</h3></div><div class="play-icon">▶</div></div>
-            <div class="card" style="background-image: url('https://images.unsplash.com/photo-1516110833967-0b5716ca1387?w=600');"><div class="overlay"><span class="mod-tag">MISSÃO 07</span><h3>Algoritmos</h3></div><div class="play-icon">▶</div></div>
+            <div class="card" style="background-image: url('https://images.unsplash.com/photo-1589254065878-42c9da997008?w=600');">
+                <div class="overlay"><span class="mod-tag">MISSÃO 04</span><h3>IA em Casa</h3></div>
+                <div class="play-icon">▶</div>
+            </div>
+            <div class="card" style="background-image: url('https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=600');">
+                <div class="overlay"><span class="mod-tag">MISSÃO 05</span><h3>Olho da Máquina</h3></div>
+                <div class="play-icon">▶</div>
+            </div>
+            <div class="card" style="background-image: url('https://images.unsplash.com/photo-1589254065909-b7086229d08c?w=600');">
+                <div class="overlay"><span class="mod-tag">MISSÃO 06</span><h3>A Voz da Robô</h3></div>
+                <div class="play-icon">▶</div>
+            </div>
+            <div class="card" style="background-image: url('https://images.unsplash.com/photo-1516110833967-0b5716ca1387?w=600');">
+                <div class="overlay"><span class="mod-tag">MISSÃO 07</span><h3>Algoritmos</h3></div>
+                <div class="play-icon">▶</div>
+            </div>
         </div>
 
         <h2 class="row-title">Temporada 3: Criação</h2>
         <div class="netflix-grid">
-            <div class="card" style="background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=600');"><div class="overlay"><span class="mod-tag">MISSÃO 08</span><h3>IA Generativa</h3></div><div class="play-icon">▶</div></div>
-            <div class="card" style="background-image: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=600');"><div class="overlay"><span class="mod-tag">MISSÃO 09</span><h3>Robótica</h3></div><div class="play-icon">▶</div></div>
-            <div class="card" style="background-image: url('https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=600');"><div class="overlay"><span class="mod-tag">MISSÃO 10</span><h3>Meu Modelo</h3></div><div class="play-icon">▶</div></div>
+            <div class="card" style="background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=600');">
+                <div class="overlay"><span class="mod-tag">MISSÃO 08</span><h3>IA Generativa</h3></div>
+                <div class="play-icon">▶</div>
+            </div>
+            <div class="card" style="background-image: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=600');">
+                <div class="overlay"><span class="mod-tag">MISSÃO 09</span><h3>Robótica</h3></div>
+                <div class="play-icon">▶</div>
+            </div>
+            <div class="card" style="background-image: url('https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=600');">
+                <div class="overlay"><span class="mod-tag">MISSÃO 10</span><h3>Meu Modelo</h3></div>
+                <div class="play-icon">▶</div>
+            </div>
         </div>
 
         <h2 class="row-title">Temporada 4: Ética</h2>
         <div class="netflix-grid">
-            <div class="card" style="background-image: url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=600');"><div class="overlay"><span class="mod-tag">MISSÃO 11</span><h3>Viés e Justiça</h3></div><div class="play-icon">▶</div></div>
-            <div class="card" style="background-image: url('https://images.unsplash.com/photo-1633265485768-3066373f177f?w=600');"><div class="overlay"><span class="mod-tag">MISSÃO 12</span><h3>Privacidade</h3></div><div class="play-icon">▶</div></div>
-            <div class="card" style="background-image: url('https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=600');"><div class="overlay"><span class="mod-tag">MISSÃO 13</span><h3>Trabalho</h3></div><div class="play-icon">▶</div></div>
+            <div class="card" style="background-image: url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=600');">
+                <div class="overlay"><span class="mod-tag">MISSÃO 11</span><h3>Viés e Justiça</h3></div>
+                <div class="play-icon">▶</div>
+            </div>
+            <div class="card" style="background-image: url('https://images.unsplash.com/photo-1633265485768-3066373f177f?w=600');">
+                <div class="overlay"><span class="mod-tag">MISSÃO 12</span><h3>Privacidade</h3></div>
+                <div class="play-icon">▶</div>
+            </div>
+            <div class="card" style="background-image: url('https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=600');">
+                <div class="overlay"><span class="mod-tag">MISSÃO 13</span><h3>Trabalho</h3></div>
+                <div class="play-icon">▶</div>
+            </div>
         </div>
 
         <h2 class="row-title">Temporada 5: Graduação</h2>
         <div class="netflix-grid">
-            <div class="card" style="background-image: url('https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?w=600');"><div class="overlay"><span class="mod-tag">MISSÃO 14</span><h3>Painel Pais</h3></div><div class="play-icon">▶</div></div>
-            <div class="card" style="background-image: url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=600');"><div class="overlay"><span class="mod-tag">MISSÃO 15</span><h3>Desafio Final</h3></div><div class="play-icon">▶</div></div>
+            <div class="card" style="background-image: url('https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?w=600');">
+                <div class="overlay"><span class="mod-tag">MISSÃO 14</span><h3>Painel Pais</h3></div>
+                <div class="play-icon">▶</div>
+            </div>
+            <div class="card" style="background-image: url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=600');">
+                <div class="overlay"><span class="mod-tag">MISSÃO 15</span><h3>Desafio Final</h3></div>
+                <div class="play-icon">▶</div>
+            </div>
         </div>
     </div>
 </body>
