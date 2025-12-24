@@ -3,89 +3,202 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A.I. KIDS LABS - Laboratório Futurista</title>
+    <title>A.I. KIDS LABS - Desperte o Gênio Digital</title>
     <style>
-        body {
-            background-color: #050510;
-            color: #ffffff;
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        /* Reset e Fontes */
+        * {
             margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #0d0d1a; /* Fundo escuro da página */
+            color: #ffffff;
             display: flex;
-            align-items: center;
             justify-content: center;
+            align-items: center;
             min-height: 100vh;
+            padding: 20px;
+        }
+
+        /* Container Principal com o Gradiente Roxo */
+        .main-container {
+            background: linear-gradient(135deg, #2a0845 0%, #6441A5 50%, #2a0845 100%);
+            border-radius: 30px;
+            padding: 40px 60px;
+            width: 100%;
+            max-width: 1200px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            position: relative;
             overflow: hidden;
         }
-        .bg-glow {
-            position: absolute;
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(188, 19, 254, 0.3) 0%, rgba(0, 0, 0, 0) 70%);
-            z-index: -1;
-            filter: blur(50px);
-            animation: move 10s infinite alternate;
+
+        /* Cabeçalho (Header) */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 80px;
         }
-        @keyframes move {
-            from { transform: translate(-50%, -50%); }
-            to { transform: translate(50%, 50%); }
+
+        .logo {
+            font-weight: bold;
+            font-size: 1.2rem;
+            letter-spacing: 1px;
         }
-        .card {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(0, 212, 255, 0.3);
-            padding: 50px;
-            border-radius: 30px;
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #b3b3b3;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #ffffff;
+        }
+
+        .btn-acessar {
+            background: linear-gradient(90deg, #a855f7, #ec4899);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 15px rgba(168, 85, 247, 0.4);
+            transition: transform 0.3s;
+        }
+
+        .btn-acessar:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Conteúdo Principal (Hero Section) */
+        .hero-content {
             text-align: center;
-            box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
-            max-width: 500px;
+            padding-bottom: 60px;
         }
+
         h1 {
-            font-size: 3.5rem;
-            margin: 0;
-            background: linear-gradient(90deg, #bc13fe, #00d4ff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 0 10px rgba(188, 19, 254, 0.5));
+            font-size: 4rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            /* Efeito de brilho neon no texto */
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(168, 85, 247, 0.6), 0 0 30px rgba(168, 85, 247, 0.4);
         }
-        h2 {
-            color: #00d4ff;
-            font-weight: 300;
-            margin-top: 10px;
-            letter-spacing: 2px;
-        }
+
         p {
             font-size: 1.1rem;
-            line-height: 1.6;
-            color: #a0a0c0;
-            margin: 30px 0;
+            color: #e0e0e0;
+            max-width: 700px;
+            margin: 0 auto 40px;
         }
+
+        /* Botões de Ação */
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
         .btn {
-            background: linear-gradient(45deg, #bc13fe, #7d12ff);
-            color: white;
-            border: none;
-            padding: 18px 40px;
-            font-size: 1.2rem;
-            font-weight: bold;
+            padding: 15px 35px;
             border-radius: 50px;
-            cursor: pointer;
-            box-shadow: 0 0 20px rgba(188, 19, 254, 0.6);
-            transition: 0.4s;
+            font-weight: bold;
+            font-size: 1rem;
             text-decoration: none;
-            display: inline-block;
+            cursor: pointer;
+            transition: all 0.3s;
         }
-        .btn:hover {
-            transform: scale(1.1);
-            box-shadow: 0 0 40px rgba(188, 19, 254, 0.9);
+
+        .btn-primary {
+            background-color: #ffffff;
+            color: #2a0845;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #f0f0f0;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: #ffffff;
+            border: 2px solid #ffffff;
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Widget Flutuante (Estrela) */
+        .floating-widget {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 15px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* Efeito de luz de fundo */
+        .glow-effect {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            height: 80%;
+            background: radial-gradient(circle, rgba(168, 85, 247, 0.4) 0%, rgba(0, 0, 0, 0) 70%);
+            filter: blur(60px);
+            z-index: 0;
+            pointer-events: none;
         }
     </style>
 </head>
 <body>
-    <div class="bg-glow"></div>
-    <div class="card">
-        <h1>A.I. KIDS LABS</h1>
-        <h2>O LABORATÓRIO DO FUTURO</h2>
-        <p>Bem-vindo ao espaço onde crianças e adultos aprendem a criar robôs, histórias e o futuro usando Inteligência Artificial.</p>
-        <a href="#" class="btn">ACESSAR O FUTURO</a>
+    <div class="main-container">
+        <div class="glow-effect"></div>
+        <header>
+            <div class="logo">A.I. KIDS LABS</div>
+            <nav>
+                <ul>
+                    <li><a href="#">Início</a></li>
+                    <li><a href="#">Laboratórios</a></li>
+                    <li><a href="#">Cursos</a></li>
+                    <li><a href="#">Sobre</a></li>
+                    <li><a href="#">Comunidade</a></li>
+                </ul>
+            </nav>
+            <a href="#" class="btn-acessar">Acessar a Plataforma</a>
+        </header>
+
+        <section class="hero-content">
+            <h1>DESPERTE O GÊNIO<br>DIGITAL</h1>
+            <p>A primeira plataforma de IA generativa feita para crianças e mentes curiosas. Crie, aprenda e evolua.</p>
+            <div class="cta-buttons">
+                <a href="#" class="btn btn-primary">Começar Agora</a>
+                <a href="#" class="btn btn-secondary">Ver Demonstração</a>
+            </div>
+        </section>
+
+        <div class="floating-widget" style="top: 100px; right: 60px;">
+             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+        </div>
     </div>
 </body>
 </html>
