@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>A.I. KIDS LABS - Oficial</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --bg-body: #05050a;
@@ -15,114 +16,168 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { background-color: var(--bg-body); color: #fff; font-family: 'Poppins', sans-serif; overflow-x: hidden; scroll-behavior: smooth; }
         h1, h2, h3, .logo { font-family: 'Orbitron', sans-serif; text-transform: uppercase; }
-        header { display: flex; justify-content: space-between; align-items: center; padding: 20px 5%; position: absolute; width: 100%; z-index: 1000; }
-        .logo { font-size: 1.5rem; font-weight: 900; color: #fff; text-shadow: 0 0 10px var(--neon-cyan); }
+        header { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            padding: 20px 5%; 
+            position: fixed; 
+            width: 100%; 
+            z-index: 1000; 
+            background: rgba(5, 5, 10, 0.95);
+            backdrop-filter: blur(10px);
+        }
+        .logo { font-size: 1.8rem; font-weight: 900; color: #fff; text-shadow: 0 0 10px var(--neon-cyan); }
         .btn-parent { 
             border: 2px solid var(--neon-magenta); 
-            padding: 8px 20px; 
+            padding: 10px 25px; 
             border-radius: 50px; 
             text-decoration: none; 
             color: #fff; 
             font-weight: bold; 
-            font-size: 0.8rem; 
+            font-size: 0.9rem; 
             transition: all 0.3s ease; 
         }
         .btn-parent:hover {
             background-color: var(--neon-magenta);
-            box-shadow: 0 0 15px var(--neon-magenta);
+            box-shadow: 0 0 20px var(--neon-magenta);
         }
 
-        /* HERO SECTION - A PRIMEIRA PÁGINA */
+        /* HERO SECTION COM ESTILO NETFLIX */
         .hero {
             height: 100vh;
-            background: var(--hero-gradient);
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.7)), var(--hero-gradient);
             display: flex; 
             flex-direction: column; 
             justify-content: center; 
             align-items: center;
             text-align: center; 
             padding: 0 20px;
-            box-shadow: inset 0 -150px 100px var(--bg-body);
-            padding-top: 80px; /* Evita sobreposição com header */
+            padding-top: 100px;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1600') center/cover;
+            opacity: 0.2;
+            z-index: -1;
         }
         .hero h1 { 
-            font-size: clamp(2.5rem, 8vw, 4.5rem); 
+            font-size: clamp(3rem, 10vw, 5rem); 
             line-height: 1.1; 
-            margin-bottom: 20px; 
-            text-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+            margin-bottom: 25px; 
+            text-shadow: 0 0 20px rgba(0, 255, 255, 0.7);
+            animation: neonGlow 2s ease-in-out infinite alternate;
         }
-        .hero p { 
+        @keyframes neonGlow {
+            from { text-shadow: 0 0 10px var(--neon-cyan), 0 0 20px var(--neon-cyan); }
+            to { text-shadow: 0 0 15px var(--neon-cyan), 0 0 30px var(--neon-cyan), 0 0 40px var(--neon-magenta); }
+        }
+        .hero-subtitle {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 25px;
+            color: #fff;
+            max-width: 800px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+        .hero-text { 
             max-width: 700px; 
-            font-size: 1.2rem; 
+            font-size: 1.4rem; 
             color: #e0e0e0; 
             margin-bottom: 40px; 
             line-height: 1.6;
         }
+        .hero-highlight {
+            font-size: 1.2rem;
+            color: var(--neon-cyan);
+            margin-bottom: 40px;
+            font-weight: bold;
+        }
         .btn-start { 
-            background: #fff; 
-            color: #2a0845; 
-            padding: 15px 40px; 
+            background: linear-gradient(45deg, var(--neon-cyan), var(--neon-magenta));
+            color: #05050a; 
+            padding: 18px 50px; 
             border-radius: 50px; 
             text-decoration: none; 
             font-weight: bold; 
+            font-size: 1.2rem;
+            border: none;
+            cursor: pointer;
             transition: all 0.3s ease;
-            font-size: 1rem;
-            border: 2px solid transparent;
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 0 5px 15px rgba(0, 255, 255, 0.4);
         }
         .btn-start:hover {
-            background: transparent;
-            color: #fff;
-            border-color: var(--neon-cyan);
-            box-shadow: 0 0 20px var(--neon-cyan);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 255, 255, 0.6);
+        }
+        .btn-start i {
+            font-size: 1.4rem;
         }
 
         /* GRID ESTILO NETFLIX */
         .catalog { 
-            padding: 80px 5%; 
+            padding: 100px 5%; 
             max-width: 1400px;
             margin: 0 auto;
         }
         .row-title { 
-            font-size: 1.6rem; 
-            margin-bottom: 25px; 
-            color: #e5e5e5; 
+            font-size: 1.8rem; 
+            margin-bottom: 35px; 
+            color: #fff; 
             display: flex; 
             align-items: center; 
-            gap: 15px; 
-            margin-top: 60px;
-            padding-left: 10px;
+            gap: 20px; 
+            margin-top: 80px;
+            padding-left: 15px;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
         }
         .row-title:first-child {
             margin-top: 0;
         }
+        .row-title::before {
+            content: '';
+            width: 4px;
+            height: 40px;
+            background: linear-gradient(to bottom, var(--neon-cyan), var(--neon-magenta));
+            border-radius: 2px;
+        }
         .row-title::after { 
             content: ""; 
-            height: 2px; 
+            height: 3px; 
             flex-grow: 1; 
             background: linear-gradient(to right, var(--neon-cyan), transparent); 
         }
         .netflix-grid { 
             display: grid; 
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
-            gap: 30px; 
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
+            gap: 35px; 
         }
         .card { 
             position: relative; 
-            height: 180px; 
+            height: 200px; 
             border-radius: 12px; 
             overflow: hidden; 
             cursor: pointer; 
             transition: 0.4s ease; 
             background-size: cover; 
             background-position: center; 
-            border: 1px solid rgba(255,255,255,0.1);
-            aspect-ratio: 16/9;
+            border: 2px solid rgba(255,255,255,0.1);
         }
         .card:hover { 
-            transform: scale(1.08); 
+            transform: scale(1.1) translateY(-10px); 
             z-index: 10; 
             border-color: var(--neon-cyan); 
-            box-shadow: 0 0 25px rgba(0, 255, 255, 0.6); 
+            box-shadow: 0 0 35px rgba(0, 255, 255, 0.7); 
         }
         .overlay { 
             position: absolute; 
@@ -131,7 +186,7 @@
             display: flex; 
             flex-direction: column; 
             justify-content: flex-end; 
-            padding: 20px; 
+            padding: 25px; 
             opacity: 1;
             transition: opacity 0.3s;
         }
@@ -139,48 +194,189 @@
             opacity: 0.9;
         }
         .mod-tag { 
-            font-size: 0.75rem; 
+            font-size: 0.85rem; 
             color: var(--neon-magenta); 
             font-weight: 900; 
             letter-spacing: 1px;
+            text-shadow: 0 0 5px rgba(255, 0, 255, 0.5);
         }
         .card h3 { 
-            font-size: 1.2rem; 
+            font-size: 1.4rem; 
             color: #fff; 
-            margin-top: 8px; 
-            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+            margin-top: 10px; 
+            text-shadow: 0 2px 8px rgba(0,0,0,0.7);
         }
         .play-icon { 
             position: absolute; 
             top: 50%; 
             left: 50%; 
             transform: translate(-50%, -50%); 
-            font-size: 3.5rem; 
+            font-size: 4rem; 
             opacity: 0; 
             transition: 0.3s;
             color: var(--neon-cyan);
-            text-shadow: 0 0 20px rgba(0, 255, 255, 0.8);
+            text-shadow: 0 0 30px rgba(0, 255, 255, 0.9);
         }
         .card:hover .play-icon { 
             opacity: 1; 
         }
 
+        /* SEÇÃO DE RECURSOS - ESTILO NETFLIX */
+        .features-section {
+            padding: 100px 5%;
+            background: linear-gradient(180deg, #05050a 0%, #0a0a1a 50%, #05050a 100%);
+            border-top: 8px solid var(--neon-cyan);
+            border-bottom: 8px solid var(--neon-magenta);
+            margin-top: 50px;
+        }
+
+        .features-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 60px;
+            color: #fff;
+            text-shadow: 0 0 15px var(--neon-cyan);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 50px;
+            margin-top: 40px;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 40px 30px;
+            text-align: center;
+            border: 1px solid rgba(0, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--neon-cyan);
+            box-shadow: 0 15px 30px rgba(0, 255, 255, 0.2);
+        }
+
+        .feature-icon {
+            font-size: 3.5rem;
+            color: var(--neon-cyan);
+            margin-bottom: 25px;
+        }
+
+        .feature-title {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .feature-description {
+            color: #b3b3b3;
+            line-height: 1.7;
+            font-size: 1.1rem;
+        }
+
+        /* FOOTER ESTILO NETFLIX */
+        .footer {
+            background-color: #0a0a1a;
+            padding: 80px 5% 40px;
+            color: #757575;
+            border-top: 1px solid rgba(0, 255, 255, 0.1);
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .footer-column h4 {
+            color: #fff;
+            margin-bottom: 25px;
+            font-size: 1.2rem;
+        }
+
+        .footer-link {
+            color: #757575;
+            text-decoration: none;
+            font-size: 1rem;
+            display: block;
+            margin-bottom: 15px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: var(--neon-cyan);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid #333;
+            font-size: 1rem;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .social-icon {
+            color: var(--neon-cyan);
+            font-size: 1.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-icon:hover {
+            color: var(--neon-magenta);
+            transform: scale(1.2);
+        }
+
         /* RESPONSIVIDADE */
+        @media (max-width: 1024px) {
+            .hero h1 { font-size: clamp(2.5rem, 8vw, 4rem); }
+            .hero-subtitle { font-size: 1.5rem; }
+            .netflix-grid { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
+            .features-grid { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+        }
+
         @media (max-width: 768px) {
-            .hero h1 { font-size: clamp(2rem, 6vw, 3rem); }
-            .hero p { font-size: 1rem; padding: 0 10px; }
-            .btn-start { padding: 12px 30px; }
-            .netflix-grid { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
-            .catalog { padding: 40px 20px; }
-            .row-title { font-size: 1.3rem; }
+            header { padding: 15px 20px; }
+            .logo { font-size: 1.5rem; }
+            .hero { padding: 120px 20px 60px; }
+            .hero-subtitle { font-size: 1.3rem; }
+            .hero-text { font-size: 1.1rem; }
+            .btn-start { padding: 15px 35px; font-size: 1.1rem; }
+            .catalog { padding: 60px 20px; }
+            .row-title { font-size: 1.5rem; margin-top: 60px; }
+            .features-section { padding: 60px 20px; }
+            .section-title { font-size: 2rem; }
         }
 
         @media (max-width: 480px) {
-            header { padding: 15px 20px; }
-            .logo { font-size: 1.2rem; }
-            .btn-parent { padding: 6px 15px; font-size: 0.7rem; }
-            .hero { padding-top: 100px; }
-            .netflix-grid { grid-template-columns: 1fr; gap: 20px; }
+            .hero h1 { font-size: 2.5rem; }
+            .hero-subtitle { font-size: 1.1rem; }
+            .btn-start { padding: 12px 25px; font-size: 1rem; }
+            .netflix-grid { grid-template-columns: 1fr; }
+            .row-title { font-size: 1.3rem; }
+            .features-grid { grid-template-columns: 1fr; }
+            .footer-links { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -191,9 +387,13 @@
     </header>
     
     <section class="hero">
-        <h1>DESPERTE O GÊNIO<br><span style="color: var(--neon-cyan)">DIGITAL</span></h1>
-        <p>Explore, aprenda e crie o amanhã com a primeira plataforma de IA desenvolvida especialmente para crianças.</p>
-        <a href="#conteudo" class="btn-start">COMEÇAR MISSÃO</a>
+        <h1>DESPERTE O GÊNIO<br>DIGITAL</h1>
+        <p class="hero-subtitle">Inteligência Artificial, aprendizado e criação, sem limites</p>
+        <p class="hero-text">A partir de R$ 29,90/mês. Cancele quando quiser.</p>
+        <p class="hero-highlight">Pronto para a jornada? Comece sua missão agora!</p>
+        <button class="btn-start">
+            <i class="fas fa-rocket"></i> COMEÇAR MISSÃO AGORA
+        </button>
     </section>
 
     <div id="conteudo" class="catalog">
@@ -277,5 +477,131 @@
             </div>
         </div>
     </div>
+
+    <!-- SEÇÃO DE RECURSOS ADICIONADA -->
+    <section class="features-section">
+        <div class="features-container">
+            <h2 class="section-title">Por que escolher A.I. KIDS LABS?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3 class="feature-title">Aprendizado Adaptativo com IA</h3>
+                    <p class="feature-description">Nossa IA personaliza cada missão de acordo com o ritmo e interesse da criança, garantindo o melhor aprendizado.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <h3 class="feature-title">Missões Gamificadas</h3>
+                    <p class="feature-description">Aprenda IA jogando! Cada conceito é transformado em uma missão divertida com recompensas e conquistas.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="feature-title">Ambiente 100% Seguro</h3>
+                    <p class="feature-description">Plataforma livre de anúncios, com monitoramento parental e conteúdo apropriado para cada faixa etária.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3 class="feature-title">Projetos Práticos</h3>
+                    <p class="feature-description">Crie seus próprios modelos de IA, chatbots e assistentes virtuais com ferramentas desenvolvidas para crianças.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER ADICIONADO -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="social-icons">
+                <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-tiktok"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+            </div>
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h4>Conteúdo</h4>
+                    <a href="#" class="footer-link">Missões</a>
+                    <a href="#" class="footer-link">Temporadas</a>
+                    <a href="#" class="footer-link">Projetos</a>
+                    <a href="#" class="footer-link">Desafios</a>
+                </div>
+                <div class="footer-column">
+                    <h4>Para Pais</h4>
+                    <a href="#" class="footer-link">Painel de Controle</a>
+                    <a href="#" class="footer-link">Relatórios de Progresso</a>
+                    <a href="#" class="footer-link">Controles Parentais</a>
+                    <a href="#" class="footer-link">FAQ para Pais</a>
+                </div>
+                <div class="footer-column">
+                    <h4>Empresa</h4>
+                    <a href="#" class="footer-link">Sobre Nós</a>
+                    <a href="#" class="footer-link">Carreiras</a>
+                    <a href="#" class="footer-link">Contato</a>
+                    <a href="#" class="footer-link">Privacidade</a>
+                </div>
+                <div class="footer-column">
+                    <h4>Recursos</h4>
+                    <a href="#" class="footer-link">Blog Educativo</a>
+                    <a href="#" class="footer-link">Tutoriais em Vídeo</a>
+                    <a href="#" class="footer-link">Material Gratuito</a>
+                    <a href="#" class="footer-link">Para Escolas</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>A.I. KIDS LABS &copy; 2024 - Desenvolvendo os criadores do futuro</p>
+                <p>Inteligência Artificial, aprendizado e criação, sem limites</p>
+                <p style="margin-top: 20px; font-size: 0.9rem; color: var(--neon-cyan);">
+                    <i class="fas fa-lock"></i> Ambiente 100% seguro para crianças | <i class="fas fa-user-shield"></i> Certificado de Segurança Digital
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Botão de começar missão
+        document.querySelector('.btn-start').addEventListener('click', function() {
+            alert('Redirecionando para a seleção de missões... Prepare-se para uma jornada incrível com IA!');
+            // Em produção, redirecionaria para a página de assinatura
+            // window.location.href = '#conteudo';
+        });
+
+        // Botão do painel dos pais
+        document.querySelector('.btn-parent').addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('Acessando Painel dos Pais... Área exclusiva para acompanhamento do progresso das crianças.');
+        });
+
+        // Cards interativos
+        document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('click', function() {
+                const missionTitle = this.querySelector('h3').textContent;
+                alert(`Iniciando: ${missionTitle}\nPrepare-se para aprender e se divertir!`);
+            });
+        });
+
+        // Efeito de scroll suave para links internos
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
