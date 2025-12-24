@@ -1,10 +1,40 @@
-/
-├── index.html
-└── assets/
-    └── images/
-        ├── mission-1.webp
-        ├── mission-1.jpg
-        ├── mission-2.webp
-        ├── mission-2.jpg
-        ├── mission-3.webp
-        └── fallback.jpg
+function loadSeason(missions, seasonTitle, seasonSubtitle) {
+  const container = document.getElementById("missions-container");
+  container.innerHTML = "";
+
+  document.querySelector(".season-title").textContent = seasonTitle;
+  document.querySelector(".season-subtitle").textContent = seasonSubtitle;
+
+  missions.forEach(mission => {
+    const card = document.createElement("article");
+    card.className = "mission-card";
+    card.tabIndex = 0;
+
+    card.innerHTML = `
+      <div class="mission-image">
+        <picture>
+          <source srcset="${mission.image.webp}" type="image/webp">
+          <source srcset="${mission.image.jpg}" type="image/jpeg">
+          <img src="${mission.image.jpg}" alt="${mission.title}" loading="lazy"
+               onerror="this.onerror=null;this.src='./assets/images/fallback.jpg';">
+        </picture>
+        <div class="mission-overlay">
+          <span class="mission-tag">MISSÃO ${mission.id}</span>
+        </div>
+      </div>
+      <div class="mission-content">
+        <h3>${mission.title}</h3>
+        <p>${mission.description}</p>
+        <div class="mission-meta">
+          <span class="mission-duration">⏱ ${mission.duration}</span>
+          <span class="difficulty">⚡ ${mission.difficulty}</span>
+        </div>
+      </div>
+    `;
+
+    card.onclick = () =>
+      alert(`🚀 ${mission.title}\n\nDuração: ${mission.duration}`);
+
+    container.appendChild(card);
+  });
+}
