@@ -1,40 +1,57 @@
-function loadSeason(missions, seasonTitle, seasonSubtitle) {
-  const container = document.getElementById("missions-container");
-  container.innerHTML = "";
-
-  document.querySelector(".season-title").textContent = seasonTitle;
-  document.querySelector(".season-subtitle").textContent = seasonSubtitle;
-
-  missions.forEach(mission => {
-    const card = document.createElement("article");
-    card.className = "mission-card";
-    card.tabIndex = 0;
-
-    card.innerHTML = `
-      <div class="mission-image">
-        <picture>
-          <source srcset="${mission.image.webp}" type="image/webp">
-          <source srcset="${mission.image.jpg}" type="image/jpeg">
-          <img src="${mission.image.jpg}" alt="${mission.title}" loading="lazy"
-               onerror="this.onerror=null;this.src='./assets/images/fallback.jpg';">
-        </picture>
-        <div class="mission-overlay">
-          <span class="mission-tag">MISSÃO ${mission.id}</span>
-        </div>
-      </div>
-      <div class="mission-content">
-        <h3>${mission.title}</h3>
-        <p>${mission.description}</p>
-        <div class="mission-meta">
-          <span class="mission-duration">⏱ ${mission.duration}</span>
-          <span class="difficulty">⚡ ${mission.difficulty}</span>
-        </div>
-      </div>
-    `;
-
-    card.onclick = () =>
-      alert(`🚀 ${mission.title}\n\nDuração: ${mission.duration}`);
-
-    container.appendChild(card);
-  });
-}
+const season2Missions = [
+  {
+    id: 1,
+    title: "IA NO NOSSO DIA A DIA",
+    description: "Descubra onde a Inteligência Artificial aparece na sua rotina.",
+    image: {
+      webp: "./assets/images/s2-mission-1.webp",
+      jpg: "./assets/images/s2-mission-1.jpg"
+    },
+    duration: "30-45 min",
+    difficulty: "Iniciante"
+  },
+  {
+    id: 2,
+    title: "RECONHECIMENTO DE IMAGENS",
+    description: "Como a IA enxerga fotos e identifica objetos e pessoas.",
+    image: {
+      webp: "./assets/images/s2-mission-2.webp",
+      jpg: "./assets/images/s2-mission-2.jpg"
+    },
+    duration: "45-60 min",
+    difficulty: "Iniciante"
+  },
+  {
+    id: 3,
+    title: "ASSISTENTES VIRTUAIS",
+    description: "Como funcionam Alexa, Google Assistente e Chatbots.",
+    image: {
+      webp: "./assets/images/s2-mission-3.webp",
+      jpg: "./assets/images/s2-mission-3.jpg"
+    },
+    duration: "45-60 min",
+    difficulty: "Iniciante"
+  },
+  {
+    id: 4,
+    title: "IA EM JOGOS",
+    description: "Como personagens e inimigos inteligentes são criados.",
+    image: {
+      webp: "./assets/images/s2-mission-4.webp",
+      jpg: "./assets/images/s2-mission-4.jpg"
+    },
+    duration: "60-75 min",
+    difficulty: "Intermediário"
+  },
+  {
+    id: 5,
+    title: "RECOMENDAÇÕES INTELIGENTES",
+    description: "Por que a IA sugere vídeos, músicas e jogos para você.",
+    image: {
+      webp: "./assets/images/s2-mission-5.webp",
+      jpg: "./assets/images/s2-mission-5.jpg"
+    },
+    duration: "60-75 min",
+    difficulty: "Intermediário"
+  }
+];
