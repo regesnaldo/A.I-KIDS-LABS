@@ -1,655 +1,355 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A.I. KIDS LABS - Jornada Completa de IA</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>A.I. KIDS LABS</title>
     <style>
-        /* RESET E CONFIGURAÇÕES GERAIS */
-        * { 
-            margin: 0; 
-            padding: 0; 
-            box-sizing: border-box; 
+        /* RESET BÁSICO */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
         
-        body { 
-            background: #05050a;
-            color: #fff; 
-            font-family: 'Poppins', sans-serif; 
-            overflow-x: hidden; 
-            scroll-behavior: smooth;
-            min-height: 100vh;
-            background: linear-gradient(135deg, #0a0a1a 0%, #05050a 50%, #0a0a1a 100%);
+        body {
+            font-family: Arial, sans-serif;
+            background: #000;
+            color: white;
+            line-height: 1.6;
+            padding-top: 80px; /* Espaço para o header fixo */
         }
         
-        /* HEADER FIXO */
-        header {
+        /* HEADER SIMPLES */
+        .header {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            background: rgba(5, 5, 10, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 2px solid #00FFFF;
+            background: rgba(0, 0, 0, 0.9);
+            padding: 20px;
             z-index: 1000;
-            padding: 15px 5%;
+            border-bottom: 3px solid #00f0ff;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
         
         .logo {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.8rem;
-            font-weight: 900;
-            background: linear-gradient(45deg, #00FFFF, #FF00FF);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+            font-size: 24px;
+            font-weight: bold;
+            color: #00f0ff;
+            text-shadow: 0 0 10px #00f0ff;
         }
         
-        .nav-links {
-            display: flex;
-            gap: 20px;
-        }
-        
-        .nav-link {
-            color: #fff;
+        .btn-parent {
+            background: #ff00ff;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
             text-decoration: none;
-            padding: 8px 20px;
-            border-radius: 20px;
-            transition: all 0.3s;
-            font-weight: 600;
-            font-size: 0.9rem;
-        }
-        
-        .nav-link:hover {
-            background: #00FFFF;
-            color: #05050a;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
         }
         
         /* HERO SECTION */
         .hero {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+            background: linear-gradient(135deg, #1a0b2e, #4a148c);
+            padding: 100px 20px;
             text-align: center;
-            padding: 120px 20px 60px;
-            background: linear-gradient(rgba(5, 5, 10, 0.9), rgba(5, 5, 10, 0.7)),
-                        url('https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=1600&q=80');
-            background-size: cover;
-            background-position: center;
-            position: relative;
         }
         
         .hero h1 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 4rem;
-            margin-bottom: 30px;
-            text-transform: uppercase;
-            background: linear-gradient(45deg, #00FFFF, #FF00FF, #FFFF00);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: glow 3s ease-in-out infinite alternate;
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: #00f0ff;
+            text-shadow: 0 0 20px #00f0ff;
         }
         
-        @keyframes glow {
-            0% { text-shadow: 0 0 10px #00FFFF; }
-            100% { text-shadow: 0 0 30px #FF00FF; }
-        }
-        
-        .hero-subtitle {
-            font-size: 1.5rem;
-            margin-bottom: 40px;
+        .hero p {
+            font-size: 20px;
             max-width: 800px;
-            line-height: 1.6;
-            color: #e0e0e0;
+            margin: 0 auto 30px;
+            color: #ccc;
         }
         
-        .stats {
-            display: flex;
-            gap: 40px;
-            margin-top: 50px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-        
-        .stat {
-            text-align: center;
-            padding: 20px;
-        }
-        
-        .stat-number {
-            font-size: 3rem;
-            font-weight: 900;
-            color: #00FFFF;
-            text-shadow: 0 0 10px currentColor;
-        }
-        
-        .stat-label {
-            font-size: 1.1rem;
-            color: #aaa;
-        }
-        
-        /* BOTÕES */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: linear-gradient(45deg, #00FFFF, #FF00FF);
-            color: #05050a;
+        .btn-start {
+            display: inline-block;
+            background: #00f0ff;
+            color: #000;
             padding: 15px 40px;
             border-radius: 50px;
             text-decoration: none;
             font-weight: bold;
-            font-size: 1.2rem;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s;
+            font-size: 18px;
             margin-top: 20px;
         }
         
-        .btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 255, 255, 0.4);
-        }
-        
-        /* SEÇÃO DE TEMPORADAS */
-        .seasons-container {
-            padding: 80px 5%;
+        /* CONTEÚDO PRINCIPAL */
+        .container {
             max-width: 1400px;
             margin: 0 auto;
+            padding: 20px;
         }
         
-        .season-section {
-            margin-bottom: 100px;
+        /* TEMPORADAS */
+        .season {
+            margin: 50px 0;
         }
         
         .season-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 2.5rem;
-            margin-bottom: 40px;
-            color: #fff;
-            text-transform: uppercase;
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-        
-        .season-title::after {
-            content: '';
-            flex: 1;
-            height: 3px;
-            background: linear-gradient(90deg, #00FFFF, transparent);
+            font-size: 32px;
+            color: #00f0ff;
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #00f0ff;
         }
         
         /* GRID DE MISSÕES */
         .missions-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
-            margin-bottom: 50px;
+            gap: 20px;
         }
         
         .mission-card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 15px;
-            overflow: hidden;
-            transition: all 0.3s;
-            border: 2px solid transparent;
-            cursor: pointer;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            transition: transform 0.3s;
+            border: 1px solid rgba(0, 240, 255, 0.3);
         }
         
         .mission-card:hover {
-            transform: translateY(-10px);
-            border-color: #00FFFF;
-            box-shadow: 0 20px 40px rgba(0, 255, 255, 0.2);
+            transform: scale(1.05);
+            border-color: #00f0ff;
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.5);
         }
         
-        .mission-image {
-            height: 200px;
-            width: 100%;
-            background: linear-gradient(45deg, #2a0845, #6441A5);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            color: #00FFFF;
-        }
-        
-        .mission-content {
-            padding: 25px;
-        }
-        
-        .mission-tag {
-            background: #FF00FF;
+        .mission-number {
+            background: #ff00ff;
             color: white;
             padding: 5px 15px;
             border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: bold;
             display: inline-block;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
+            font-weight: bold;
         }
         
         .mission-card h3 {
-            font-size: 1.4rem;
+            color: white;
             margin-bottom: 10px;
-            color: #fff;
+            font-size: 20px;
         }
         
         .mission-card p {
             color: #ccc;
-            line-height: 1.6;
-            margin-bottom: 15px;
+            font-size: 14px;
         }
         
-        .mission-meta {
-            display: flex;
-            justify-content: space-between;
-            color: #aaa;
-            font-size: 0.9rem;
-        }
-        
-        /* CONTROLES DE NAVEGAÇÃO */
-        .season-navigation {
-            position: fixed;
-            right: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(0, 0, 0, 0.8);
-            border-radius: 10px;
-            padding: 15px;
-            z-index: 999;
-        }
-        
-        .season-nav-buttons {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-        
-        .season-nav-btn {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
-            border: 2px solid #00FFFF;
-            color: white;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s;
-        }
-        
-        .season-nav-btn:hover {
-            background: #00FFFF;
-            color: #05050a;
-        }
-        
-        /* FOOTER */
-        footer {
+        /* RODAPÉ */
+        .footer {
             background: #0a0a1a;
-            padding: 60px 5% 30px;
-            border-top: 2px solid #00FFFF;
-        }
-        
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
+            padding: 50px 20px;
             text-align: center;
+            margin-top: 100px;
+            border-top: 3px solid #ff00ff;
         }
         
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-bottom: 40px;
-            flex-wrap: wrap;
+        .footer p {
+            color: #ccc;
         }
         
-        .footer-link {
-            color: #aaa;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        
-        .footer-link:hover {
-            color: #00FFFF;
-        }
-        
-        .copyright {
-            color: #666;
-            font-size: 0.9rem;
-        }
-        
-        /* RESPONSIVIDADE */
-        @media (max-width: 1024px) {
-            .hero h1 { font-size: 3rem; }
-            .missions-grid { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
-            .season-navigation { display: none; }
-        }
-        
+        /* RESPONSIVO */
         @media (max-width: 768px) {
-            header { padding: 10px 20px; }
-            .nav-links { display: none; }
-            .hero h1 { font-size: 2.5rem; }
-            .hero-subtitle { font-size: 1.2rem; }
-            .stats { gap: 20px; }
-            .stat-number { font-size: 2.5rem; }
+            .hero h1 { font-size: 32px; }
+            .hero p { font-size: 16px; }
+            .season-title { font-size: 24px; }
             .missions-grid { grid-template-columns: 1fr; }
-            .season-title { font-size: 2rem; }
-        }
-        
-        @media (max-width: 480px) {
-            .hero h1 { font-size: 2rem; }
-            .btn { padding: 12px 30px; font-size: 1rem; }
-            .stat { padding: 10px; }
-            .stat-number { font-size: 2rem; }
         }
     </style>
 </head>
 <body>
     <!-- HEADER -->
-    <header>
+    <header class="header">
         <div class="logo">A.I. KIDS LABS</div>
-        <nav class="nav-links">
-            <a href="#temporadas" class="nav-link">TEMPORADAS</a>
-            <a href="#sobre" class="nav-link">SOBRE</a>
-            <a href="#contato" class="nav-link">CONTATO</a>
-            <a href="#" class="nav-link" style="background: #FF00FF;">PAINEL PAIS</a>
-        </nav>
+        <a href="#" class="btn-parent">PAINEL DOS PAIS</a>
     </header>
 
-    <!-- NAVEGAÇÃO RÁPIDA -->
-    <div class="season-navigation">
-        <div class="season-nav-buttons" id="seasonNav"></div>
-    </div>
-
-    <!-- HERO SECTION -->
+    <!-- HERO -->
     <section class="hero">
-        <h1>JORNADA COMPLETA DE IA</h1>
-        <p class="hero-subtitle">
-            Domine a Inteligência Artificial em 45 temporadas • 225 missões práticas • Aprenda criando
-        </p>
-        <a href="#temporadas" class="btn">
-            <i class="fas fa-rocket"></i> COMEÇAR JORNADA
-        </a>
-        
-        <div class="stats">
-            <div class="stat">
-                <div class="stat-number">45</div>
-                <div class="stat-label">TEMPORADAS</div>
-            </div>
-            <div class="stat">
-                <div class="stat-number">225+</div>
-                <div class="stat-label">MISSÕES</div>
-            </div>
-            <div class="stat">
-                <div class="stat-number">500h</div>
-                <div class="stat-label">CONTEÚDO</div>
-            </div>
-            <div class="stat">
-                <div class="stat-number">100%</div>
-                <div class="stat-label">PRÁTICO</div>
-            </div>
-        </div>
+        <h1>DESPERTE O GÊNIO DIGITAL</h1>
+        <p>Inteligência Artificial, aprendizado e criação sem limites. A primeira plataforma de IA desenvolvida especialmente para crianças.</p>
+        <p>A partir de R$ 29,90/mês. Cancele quando quiser.</p>
+        <a href="#temporadas" class="btn-start">COMEÇAR MISSÃO AGORA</a>
     </section>
 
     <!-- CONTEÚDO PRINCIPAL -->
-    <main class="seasons-container" id="temporadas">
-        <!-- As temporadas serão geradas por JavaScript -->
+    <main class="container" id="temporadas">
+        <!-- As 45 temporadas serão geradas por JavaScript abaixo -->
     </main>
 
-    <!-- FOOTER -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-links">
-                <a href="#" class="footer-link">Termos de Uso</a>
-                <a href="#" class="footer-link">Privacidade</a>
-                <a href="#" class="footer-link">Contato</a>
-                <a href="#" class="footer-link">Suporte</a>
-                <a href="#" class="footer-link">Para Escolas</a>
-            </div>
-            <p class="copyright">
-                © 2024 A.I. KIDS LABS. Todos os direitos reservados.<br>
-                Inteligência Artificial para a próxima geração de criadores.
-            </p>
-        </div>
+    <!-- RODAPÉ -->
+    <footer class="footer">
+        <p>A.I. KIDS LABS © 2024 - Desenvolvendo os criadores do futuro</p>
+        <p>Inteligência Artificial, aprendizado e criação, sem limites</p>
     </footer>
 
     <script>
-        // Dados das temporadas
-        const seasonsData = [
+        // Dados das 45 temporadas
+        const temporadas = [
             // TEMPORADAS 1-9: Fundamentos
-            { id: 1, title: "Fundamentos da IA", color: "#00FFFF", missions: 5 },
-            { id: 2, title: "Pensamento Computacional", color: "#00FFFF", missions: 5 },
-            { id: 3, title: "Algoritmos Básicos", color: "#00FFFF", missions: 5 },
-            { id: 4, title: "Dados e Informação", color: "#00FFFF", missions: 5 },
-            { id: 5, title: "Redes Neurais Iniciantes", color: "#00FFFF", missions: 5 },
-            { id: 6, title: "Python Kids", color: "#00FFFF", missions: 5 },
-            { id: 7, title: "Matemática da IA", color: "#00FFFF", missions: 5 },
-            { id: 8, title: "Lógica Booleana", color: "#00FFFF", missions: 5 },
-            { id: 9, title: "Meu Primeiro Chatbot", color: "#00FFFF", missions: 5 },
+            "1: Fundamentos da IA",
+            "2: Pensamento Computacional", 
+            "3: Algoritmos Básicos",
+            "4: Dados e Informação",
+            "5: Redes Neurais para Iniciantes",
+            "6: Python Kids",
+            "7: Matemática da IA",
+            "8: Lógica Booleana",
+            "9: Projeto: Meu Primeiro Chatbot",
             
-            // TEMPORADAS 10-18: Aplicações
-            { id: 10, title: "IA no Dia a Dia", color: "#FF00FF", missions: 5 },
-            { id: 11, title: "Reconhecimento de Imagens", color: "#FF00FF", missions: 5 },
-            { id: 12, title: "Processamento de Linguagem", color: "#FF00FF", missions: 5 },
-            { id: 13, title: "Assistentes Virtuais", color: "#FF00FF", missions: 5 },
-            { id: 14, title: "Jogos Inteligentes", color: "#FF00FF", missions: 5 },
-            { id: 15, title: "Recomendação de Conteúdo", color: "#FF00FF", missions: 5 },
-            { id: 16, title: "Detecção de Objetos", color: "#FF00FF", missions: 5 },
-            { id: 17, title: "Tradução Automática", color: "#FF00FF", missions: 5 },
-            { id: 18, title: "Filtros Inteligentes", color: "#FF00FF", missions: 5 },
+            // TEMPORADAS 10-18: Aplicações Práticas
+            "10: IA no Dia a Dia",
+            "11: Reconhecimento de Imagens",
+            "12: Processamento de Linguagem",
+            "13: Assistentes Virtuais",
+            "14: Jogos Inteligentes",
+            "15: Recomendação de Conteúdo",
+            "16: Detecção de Objetos",
+            "17: Tradução Automática",
+            "18: Projeto: Filtro Inteligente",
             
             // TEMPORADAS 19-27: Machine Learning
-            { id: 19, title: "Introdução ao ML", color: "#00FF00", missions: 5 },
-            { id: 20, title: "Classificação", color: "#00FF00", missions: 5 },
-            { id: 21, title: "Regressão", color: "#00FF00", missions: 5 },
-            { id: 22, title: "Clustering", color: "#00FF00", missions: 5 },
-            { id: 23, title: "Árvores de Decisão", color: "#00FF00", missions: 5 },
-            { id: 24, title: "Redes Neurais Simples", color: "#00FF00", missions: 5 },
-            { id: 25, title: "Treinamento de Modelos", color: "#00FF00", missions: 5 },
-            { id: 26, title: "Validação de Modelos", color: "#00FF00", missions: 5 },
-            { id: 27, title: "Classificador de Emojis", color: "#00FF00", missions: 5 },
+            "19: Introdução ao ML",
+            "20: Classificação",
+            "21: Regressão",
+            "22: Clustering",
+            "23: Árvores de Decisão",
+            "24: Redes Neurais Simples",
+            "25: Treinamento de Modelos",
+            "26: Validação de Modelos",
+            "27: Projeto: Classificador de Emojis",
             
             // TEMPORADAS 28-36: IA Criativa
-            { id: 28, title: "IA Generativa", color: "#FFFF00", missions: 5 },
-            { id: 29, title: "Geração de Texto", color: "#FFFF00", missions: 5 },
-            { id: 30, title: "Geração de Imagens", color: "#FFFF00", missions: 5 },
-            { id: 31, title: "Síntese de Música", color: "#FFFF00", missions: 5 },
-            { id: 32, title: "DeepFakes Éticos", color: "#FFFF00", missions: 5 },
-            { id: 33, title: "Design com IA", color: "#FFFF00", missions: 5 },
-            { id: 34, title: "Poesia Digital", color: "#FFFF00", missions: 5 },
-            { id: 35, title: "Arte Generativa", color: "#FFFF00", missions: 5 },
-            { id: 36, title: "Galeria de Arte IA", color: "#FFFF00", missions: 5 },
+            "28: IA Generativa",
+            "29: Geração de Texto",
+            "30: Geração de Imagens",
+            "31: Síntese de Música",
+            "32: DeepFakes para o Bem",
+            "33: Design com IA",
+            "34: Poesia Digital",
+            "35: Arte Generativa",
+            "36: Projeto: Galeria de Arte IA",
             
             // TEMPORADAS 37-45: IA Avançada
-            { id: 37, title: "Deep Learning", color: "#9D00FF", missions: 5 },
-            { id: 38, title: "Visão Computacional", color: "#9D00FF", missions: 5 },
-            { id: 39, title: "NLP Avançado", color: "#9D00FF", missions: 5 },
-            { id: 40, title: "Reinforcement Learning", color: "#9D00FF", missions: 5 },
-            { id: 41, title: "IA para Jogos", color: "#9D00FF", missions: 5 },
-            { id: 42, title: "Robótica com IA", color: "#9D00FF", missions: 5 },
-            { id: 43, title: "IA Ética Avançada", color: "#9D00FF", missions: 5 },
-            { id: 44, title: "Projeto Final", color: "#9D00FF", missions: 5 },
-            { id: 45, title: "Mestre em IA", color: "#9D00FF", missions: 5 }
+            "37: Deep Learning",
+            "38: Visão Computacional",
+            "39: NLP Avançado",
+            "40: Reinforcement Learning",
+            "41: IA para Jogos",
+            "42: Robótica com IA",
+            "43: IA Ética Avançada",
+            "44: Projeto Final: IA Completa",
+            "45: Graduação: Mestre em IA"
         ];
 
-        // Tipos de missões
-        const missionTypes = [
-            { name: "Introdução", icon: "📚", duration: "30min" },
-            { name: "Prática", icon: "🔧", duration: "45min" },
-            { name: "Desafio", icon: "🎯", duration: "60min" },
-            { name: "Projeto", icon: "🚀", duration: "90min" },
-            { name: "Aplicação", icon: "🌍", duration: "120min" }
+        // Missões por temporada
+        const missoes = [
+            "Introdução ao Tema",
+            "Primeiros Experimentos",
+            "Desafio Prático",
+            "Projeto Criativo",
+            "Aplicação no Mundo Real"
         ];
 
-        // Imagens temáticas para IA
-        const aiImages = [
-            "🧠", "🤖", "💻", "🔬", "📊", "🎨", "🎵", "🎮", "🔍", "📱",
-            "💡", "⚡", "🌟", "🌈", "🔄", "🎭", "📈", "🔗", "🎪", "🛠️"
-        ];
-
-        // Função para criar uma missão
-        function createMission(seasonId, missionIndex) {
-            const missionType = missionTypes[missionIndex % missionTypes.length];
-            const imageEmoji = aiImages[Math.floor(Math.random() * aiImages.length)];
+        // Função para criar temporadas
+        function criarTemporadas() {
+            const container = document.querySelector('.container');
             
-            return {
-                id: `${seasonId}.${missionIndex + 1}`,
-                title: `Missão ${missionIndex + 1}: ${missionType.name}`,
-                description: `Aprenda conceitos de IA através de ${missionType.name.toLowerCase()}. Desenvolvido especialmente para jovens aprendizes.`,
-                icon: missionType.icon,
-                emoji: imageEmoji,
-                duration: missionType.duration,
-                difficulty: Math.min(5, Math.floor(seasonId / 9) + 1)
-            };
-        }
-
-        // Função para criar uma temporada
-        function createSeasonElement(season) {
-            const seasonElement = document.createElement('div');
-            seasonElement.className = 'season-section';
-            seasonElement.id = `season-${season.id}`;
-            
-            // Criar título da temporada
-            const titleElement = document.createElement('h2');
-            titleElement.className = 'season-title';
-            titleElement.innerHTML = `
-                <span style="color: ${season.color}">T${season.id.toString().padStart(2, '0')}</span>
-                ${season.title}
-            `;
-            
-            // Criar grid de missões
-            const gridElement = document.createElement('div');
-            gridElement.className = 'missions-grid';
-            
-            // Adicionar missões
-            for (let i = 0; i < season.missions; i++) {
-                const mission = createMission(season.id, i);
+            for (let i = 0; i < temporadas.length; i++) {
+                // Criar seção da temporada
+                const seasonDiv = document.createElement('div');
+                seasonDiv.className = 'season';
+                seasonDiv.id = `temporada-${i + 1}`;
                 
-                const missionElement = document.createElement('div');
-                missionElement.className = 'mission-card';
-                missionElement.innerHTML = `
-                    <div class="mission-image" style="background: linear-gradient(45deg, ${season.color}20, ${season.color}40)">
-                        <div style="font-size: 4rem;">${mission.emoji}</div>
-                    </div>
-                    <div class="mission-content">
-                        <span class="mission-tag" style="background: ${season.color}">${mission.id}</span>
-                        <h3>${mission.title}</h3>
-                        <p>${mission.description}</p>
-                        <div class="mission-meta">
-                            <span>${mission.icon} ${mission.duration}</span>
-                            <span>⭐ ${mission.difficulty}/5</span>
-                        </div>
-                    </div>
-                `;
+                // Título da temporada
+                const title = document.createElement('h2');
+                title.className = 'season-title';
+                title.textContent = temporadas[i];
+                seasonDiv.appendChild(title);
                 
-                missionElement.addEventListener('click', () => {
-                    alert(`🚀 Iniciando ${mission.id}\n\n${season.title}\n\nDuração: ${mission.duration}\nDificuldade: ${mission.difficulty}/5`);
-                });
+                // Grid de missões
+                const grid = document.createElement('div');
+                grid.className = 'missions-grid';
                 
-                gridElement.appendChild(missionElement);
-            }
-            
-            // Montar temporada
-            seasonElement.appendChild(titleElement);
-            seasonElement.appendChild(gridElement);
-            
-            return seasonElement;
-        }
-
-        // Função para criar navegação por temporadas
-        function createSeasonNavigation() {
-            const navContainer = document.getElementById('seasonNav');
-            
-            seasonsData.forEach(season => {
-                const button = document.createElement('button');
-                button.className = 'season-nav-btn';
-                button.textContent = season.id;
-                button.title = season.title;
-                button.style.borderColor = season.color;
-                
-                button.addEventListener('click', () => {
-                    document.getElementById(`season-${season.id}`).scrollIntoView({
-                        behavior: 'smooth'
+                // Criar 5 missões para cada temporada
+                for (let j = 0; j < 5; j++) {
+                    const card = document.createElement('div');
+                    card.className = 'mission-card';
+                    
+                    const missionNum = document.createElement('div');
+                    missionNum.className = 'mission-number';
+                    missionNum.textContent = `MISSÃO ${i + 1}.${j + 1}`;
+                    
+                    const missionTitle = document.createElement('h3');
+                    missionTitle.textContent = missoes[j];
+                    
+                    const missionDesc = document.createElement('p');
+                    missionDesc.textContent = `Aprenda conceitos de IA através de exercícios práticos. Duração: ${30 + (i * 2) + (j * 10)} minutos.`;
+                    
+                    card.appendChild(missionNum);
+                    card.appendChild(missionTitle);
+                    card.appendChild(missionDesc);
+                    
+                    // Adicionar clique
+                    card.addEventListener('click', function() {
+                        alert(`Iniciando ${missionNum.textContent}: ${missionTitle.textContent}\n\nTemporada: ${temporadas[i]}`);
                     });
-                });
+                    
+                    grid.appendChild(card);
+                }
                 
-                navContainer.appendChild(button);
-            });
+                seasonDiv.appendChild(grid);
+                container.appendChild(seasonDiv);
+            }
         }
 
-        // Função para carregar todas as temporadas
-        function loadAllSeasons() {
-            const container = document.querySelector('.seasons-container');
-            
-            // Limpar conteúdo existente
-            container.innerHTML = '';
-            
-            // Adicionar todas as temporadas
-            seasonsData.forEach(season => {
-                container.appendChild(createSeasonElement(season));
-            });
-            
-            // Criar navegação
-            createSeasonNavigation();
-            
-            // Adicionar botão de voltar ao topo
-            const backToTop = document.createElement('div');
-            backToTop.style.textAlign = 'center';
-            backToTop.style.marginTop = '50px';
-            backToTop.innerHTML = `
-                <button class="btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
-                    <i class="fas fa-arrow-up"></i> Voltar ao Topo
-                </button>
-            `;
-            container.appendChild(backToTop);
-        }
-
-        // Inicializar quando a página carregar
-        document.addEventListener('DOMContentLoaded', () => {
-            console.log('A.I. KIDS LABS - Carregando...');
-            loadAllSeasons();
-            console.log('✅ Todas as temporadas carregadas!');
-            
-            // Adicionar interação ao botão do painel dos pais
-            document.querySelector('[style*="background: #FF00FF"]').addEventListener('click', (e) => {
-                e.preventDefault();
-                alert('🔒 Acessando Painel dos Pais...\n\nÁrea exclusiva para acompanhamento do progresso das crianças.');
-            });
+        // Botão Painel dos Pais
+        document.querySelector('.btn-parent').addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('Acessando Painel dos Pais...\n\nÁrea exclusiva para acompanhamento do progresso das crianças.');
         });
 
-        // Tratamento de erros
-        window.addEventListener('error', (error) => {
-            console.error('❌ Erro detectado:', error);
-            // Mostrar mensagem amigável
-            const errorDiv = document.createElement('div');
-            errorDiv.style.cssText = `
-                position: fixed;
-                top: 20px;
-                right: 20px;
-                background: #FF00FF;
-                color: white;
-                padding: 15px;
-                border-radius: 10px;
-                z-index: 10000;
-                display: none;
-            `;
-            errorDiv.id = 'error-message';
-            errorDiv.textContent = 'Algo deu errado. Recarregue a página.';
-            document.body.appendChild(errorDiv);
-            
-            setTimeout(() => {
-                document.getElementById('error-message').style.display = 'block';
-            }, 1000);
+        // Botão Começar Missão
+        document.querySelector('.btn-start').addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('Redirecionando para a primeira temporada...\n\nPrepare-se para uma jornada incrível com IA!');
+        });
+
+        // Carregar todas as temporadas quando a página carregar
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Carregando A.I. KIDS LABS...');
+            criarTemporadas();
+            console.log('✅ Todas as 45 temporadas carregadas com sucesso!');
+        });
+
+        // Navegação suave para links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
         });
     </script>
 </body>
