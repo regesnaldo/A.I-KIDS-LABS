@@ -1,0 +1,59 @@
+import '../models/mission.dart';
+
+const List<Mission> season2Missions = [
+  Mission(
+    id: 1,
+    title: "IA NO NOSSO DIA A DIA",
+    description: "Descubra onde a Inteligência Artificial aparece na sua rotina.",
+    image: MissionImage(
+      webp: "assets/images/s2-mission-1.webp",
+      jpg: "assets/images/s2-mission-1.jpg",
+    ),
+    duration: "30-45 min",
+    difficulty: "Iniciante",
+  ),
+  Mission(
+    id: 2,
+    title: "RECONHECIMENTO DE IMAGENS",
+    description: "Como a IA enxerga fotos e identifica objetos e pessoas.",
+    image: MissionImage(
+      webp: "assets/images/s2-mission-2.webp",
+      jpg: "assets/images/s2-mission-2.jpg",
+    ),
+    duration: "45-60 min",
+    difficulty: "Iniciante",
+  ),
+  Mission(
+    id: 3,
+    title: "ASSISTENTES VIRTUAIS",
+    description: "Como funcionam Alexa, Google Assistente e Chatbots.",
+    image: MissionImage(
+      webp: "assets/images/s2-mission-3.webp",
+      jpg: "assets/images/s2-mission-3.jpg",
+    ),
+    duration: "45-60 min",
+    difficulty: "Iniciante",
+  ),
+  Mission(
+    id: 4,
+    title: "IA EM JOGOS",
+    description: "Como personagens e inimigos inteligentes são criados.",
+    image: MissionImage(
+      webp: "assets/images/s2-mission-4.webp",
+      jpg: "assets/images/s2-mission-4.jpg",
+    ),
+    duration: "60-75 min",
+    difficulty: "Intermediário",
+  ),
+  Mission(
+    id: 5,
+    title: "RECOMENDAÇÕES INTELIGENTES",
+    description: "Por que a IA sugere vídeos, músicas e jogos para você.",
+    image: MissionImage(
+      webp: "assets/images/s2-mission-5.webp",
+      jpg: "assets/images/s2-mission-5.jpg",
+    ),
+    duration: "60-75 min",
+    difficulty: "Intermediário",
+  ),
+];
